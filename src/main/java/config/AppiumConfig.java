@@ -9,8 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class AppiumConfig {
-    public static AppiumDriver driver;
+public abstract class AppiumConfig {
+    protected static AppiumDriver driver;
 
     @BeforeMethod
     public void setup(){
