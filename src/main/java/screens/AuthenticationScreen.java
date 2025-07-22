@@ -22,6 +22,9 @@ WebElement btnRegistration;
 @FindBy(id= "com.sheygam.contactapp:id/loginBtn")
 WebElement btnLogin;
 
+@FindBy(xpath = "//*[@text='Authentication']")
+WebElement logoAuth;
+
 public void typeRegistrationForm(User user){
     inputEmail.sendKeys(user.getUsername());
     inputPassword.sendKeys(user.getPassword());

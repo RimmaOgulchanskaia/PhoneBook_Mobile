@@ -12,8 +12,10 @@ public class ContactsScreen extends BaseScreen{
     @FindBy(xpath = "//android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView")
     WebElement textContactList;
 
+
     public boolean validateContactsScreenOpen(String text){
         return textInElementPresent(textContactList, text, 10);
 
     }
+
 }

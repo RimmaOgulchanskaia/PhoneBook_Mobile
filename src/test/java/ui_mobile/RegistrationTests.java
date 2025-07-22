@@ -26,4 +26,19 @@ public class RegistrationTests extends AppiumConfig {
         Assert.assertTrue( new ContactsScreen(driver).validateContactsScreenOpen("Contact list"));
 
     }
+    @Test
+    public void registrationNegativeTestWrongEmail(){
+        authenticationScreen=new AuthenticationScreen(driver);
+        authenticationScreen.typeRegistrationForm(createUserWrongEmail("admin@"));
+        Assert.assertTrue( new ContactsScreen(driver).validateContactsScreenOpen("Authentication"));
+
+    }
+    @Test
+    public void registrationNegativeTestWrongPassword(){
+        authenticationScreen=new AuthenticationScreen(driver);
+        authenticationScreen.typeRegistrationForm(createUserWrongPassword("Admin"));
+        Assert.assertTrue( new ContactsScreen(driver).validateContactsScreenOpen("Authentication"));
+
+    }
+
 }
