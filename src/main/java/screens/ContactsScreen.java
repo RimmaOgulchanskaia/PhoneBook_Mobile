@@ -12,10 +12,17 @@ public class ContactsScreen extends BaseScreen{
     @FindBy(xpath = "//android.widget.FrameLayout/android.view.ViewGroup/android.widget.FrameLayout[1]/android.view.ViewGroup/android.widget.TextView")
     WebElement textContactList;
 
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/add_contact_btn']")
+    WebElement btnaddNewContactPlus;
+
 
     public boolean validateContactsScreenOpen(String text){
         return textInElementPresent(textContactList, text, 10);
 
     }
+    public void clickbtnPlus(){
+        btnaddNewContactPlus.click();
+    }
+
 
 }

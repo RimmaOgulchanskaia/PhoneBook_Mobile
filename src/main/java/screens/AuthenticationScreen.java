@@ -31,4 +31,10 @@ public void typeRegistrationForm(User user){
     btnRegistration.click();
 }
 
+public void typeLoginForm(User user){
+        inputEmail.sendKeys(user.getUsername());
+        inputPassword.sendKeys(user.getPassword());
+        btnLogin.click();
+    }
+
 }
