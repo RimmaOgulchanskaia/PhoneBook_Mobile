@@ -21,9 +21,14 @@ public abstract class BaseScreen {
         @FindBy(xpath = "//hierarchy/android.widget.Toast")
         WebElement messageSuccess;
 
+
+
+
     public boolean validateMessageSucceess(String text){
         return textInElementPresent(messageSuccess, text, 10);
     }
+
+
 
 
     public void pause(int time){

@@ -47,5 +47,26 @@ public class ContactFactory {
                 .description("description")
                 .build();
     }
+    public static Contact createNegativeContact_WrongLastName(String LastName){
+        return Contact.builder()
+                .name(generateString(5))
+                .lastName(LastName)
+                .email(generateString(12))
+                .phone(generatePhone(10))
+                .address(generateString(10))
+                .description("description")
+                .build();
+    }
+
+    public static Contact createNegativeContact_WrongAddress(String address){
+        return Contact.builder()
+                .name(generateString(5))
+                .lastName(generateString(10))
+                .email(generateString(12))
+                .phone(generatePhone(10))
+                .address(address)
+                .description("description")
+                .build();
+    }
 
 }

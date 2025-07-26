@@ -16,8 +16,12 @@ public class ContactsScreen extends BaseScreen{
     WebElement btnaddNewContactPlus;
 
 
+
+
     public boolean validateContactsScreenOpen(String text){
         return textInElementPresent(textContactList, text, 10);
+
+
 
     }
     public void clickbtnPlus(){

@@ -5,9 +5,7 @@ import dto.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import screens.AuthenticationScreen;
-import screens.ContactsScreen;
-import screens.SplashScreen;
+import screens.*;
 
 public class LoginTests extends AppiumConfig {
 
@@ -27,4 +25,26 @@ public class LoginTests extends AppiumConfig {
         Assert.assertTrue(new ContactsScreen(driver).validateContactsScreenOpen("Contact list"));
 
     }
+
+    @Test
+    public void loginNegativeTest_WrongUserName(){
+        authenticationScreen.typeLoginForm(User.builder()
+                .username("qa_mailmail.com")
+                .password("Qwerty123!").build());
+        Assert.assertTrue(new ErrorScreen(driver).validateErrorMessage("Login or Password incorrect"));
+
+
+    }
+
+    @Test
+    public void loginNegativeTest_WrongPassword(){
+        authenticationScreen.typeLoginForm(User.builder()
+                .username("qa_mailmail.com")
+                .password("Qwerty123").build());
+        Assert.assertTrue(new ErrorScreen(driver).validateErrorMessage("Login or Password incorrect"));
+
+
+    }
+
+
 }
