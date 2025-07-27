@@ -1,6 +1,7 @@
 package ui_mobile;
 
 import config.AppiumConfig;
+import dto.Contact;
 import dto.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -13,6 +14,7 @@ import static utils.ContactFactory.*;
 public class AddNewContactTest extends AppiumConfig {
     ContactsScreen contactsScreen;
     AddNewContactScreen addNewContactScreen;
+    ContactScreen contactScreen;
 
 
     @BeforeMethod
@@ -20,11 +22,11 @@ public class AddNewContactTest extends AppiumConfig {
         new SplashScreen(driver);
         new AuthenticationScreen(driver)
                 .typeLoginForm(User.builder()
-                        .username("qa_mail@mail.com")
-                        .password("Qwerty123!")
+                        .username("qa_user_qwerty@mail.com")//("qa_mail@mail.com")
+                        .password("Password123!")//("Qwerty123!")
                         .build());
         contactsScreen=new ContactsScreen(driver);
-        contactsScreen.clickbtnPlus();
+        contactsScreen.clickBtnPlus();
         addNewContactScreen = new AddNewContactScreen(driver);
     }
     @Test
@@ -33,6 +35,20 @@ public class AddNewContactTest extends AppiumConfig {
         Assert.assertTrue(addNewContactScreen.validateMessageSucceess("Contact was added!"));
 
     }
+
+    @Test
+    public void addNewContactPositiveTest_validateDataContact(){
+        Contact contact= createPositiveContact();
+        addNewContactScreen.typeContactForm(contact);
+        contactsScreen.scrollToLastContact();
+        contactsScreen.clickToLastContact();
+        contactScreen= new ContactScreen(driver);
+        contactScreen.getContact();
+        Assert.assertEquals(contactScreen.getContact(), contact);
+
+    }
+
+
     @Test
     public void addNewContactNegativeTest_WrongName(){
         addNewContactScreen.typeContactForm(createNegativeContact_WrongName("   "));
