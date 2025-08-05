@@ -3,6 +3,7 @@ package screens;
 import io.appium.java_client.AppiumDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.support.FindBy;
 import org.testng.annotations.Test;
 
@@ -25,12 +26,27 @@ public class ContactsScreen extends BaseScreen{
     @FindBy(xpath = "//*[@text = 'YES']")
     WebElement btnYes;
 
+    @FindBy(xpath = "//android.widget.ImageView[@content-desc='More options']")
+    WebElement btnMoreOptions;
+
+    @FindBy(xpath = "//*[@resource-id='com.sheygam.contactapp:id/title' and @text='Date picker']")
+    WebElement btnDatePicker;
+
     public boolean validateContactsScreenOpen(String text){
         return textInElementPresent(textContactList, text, 10);
     }
 
     public void clickBtnPlus(){
         btnAddNewContactPlus.click();
+    }
+
+    public void clickBtnMoreOptions(){
+        btnMoreOptions.click();
+    }
+
+    public DatePickerScreen clickBtnDatePicker(){
+        btnDatePicker.click();
+        return new DatePickerScreen(driver);
     }
 
     public void scrollToLastContact(){
@@ -50,6 +66,8 @@ public class ContactsScreen extends BaseScreen{
                 flag = false;
         }
     }
+
+
 
     public void clickToLastContact(){
         listContact.get(listContact.size()-1).click();

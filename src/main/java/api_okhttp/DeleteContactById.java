@@ -17,7 +17,8 @@ public class DeleteContactById implements BaseAPI {
                 .delete()
                 .build()
                 ;
-        try(Response response = OK_HTTP_CLIENT.newCall(request).execute()){
+        try(
+            Response response = OK_HTTP_CLIENT.newCall(request).execute()){
             return response;
         }catch (IOException e){
             e.printStackTrace();

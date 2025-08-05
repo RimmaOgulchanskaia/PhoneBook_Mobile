@@ -56,6 +56,16 @@ public class EditContactTests extends AppiumConfig {
     }
 
     @Test
+    public void editContactPositiveTest_validateMessage() {
+        Contact contact = createPositiveContact();
+        contactsScreen.swipeLeftToRight()
+                .editContact(contact)
+        ;
+
+    }
+
+
+    @Test
     public void editContactNegativeTest_WrongEmail(){
         contactsScreen.swipeLeftToRight()
                 .editContact(createNegativeContact_WrongEmail("Rrr@"));

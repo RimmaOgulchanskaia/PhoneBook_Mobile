@@ -54,10 +54,15 @@ public class DeleteContactByIdTests {
         String id = "1";
         Response response = deleteContactById(tokenDto, id);
         System.out.println(response.message());
+        System.out.println(response.code());
         if (response.code() == 400) {
+            System.out.println(response.body().contentLength());
             ErrorMessageDto errorMessageDto =
                     GSON.fromJson(response.body().string(), ErrorMessageDto.class);
-            System.out.println(errorMessageDto.toString());
+            System.out.println(errorMessageDto.getMessage().toString());
+            Assert.assertTrue(errorMessageDto.getMessage().toString()
+                    .contains("not found in your contacts!"));
         }
+
     }
 }
